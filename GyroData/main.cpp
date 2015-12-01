@@ -162,9 +162,9 @@ void updateDisplay(void)
     
     p << osc::BeginBundleImmediate
     << osc::BeginMessage( "/gyroX" )
-    << gyroX << osc::EndMessage
+    << currX << osc::EndMessage
     << osc::BeginMessage( "/gyroY" )
-    << gyroY << osc::EndMessage
+    << currY << osc::EndMessage
     << osc::EndBundle;
     
     transmitSocket.Send( p.Data(), p.Size() );
@@ -215,7 +215,7 @@ void updateDisplay(void)
     Sleep(15);
 #endif
 #ifdef __APPLE__
-    sleep(0.5);
+    sleep(0.7);
 #endif
     glutPostRedisplay();
 }
@@ -272,7 +272,7 @@ int main(int argc, char** argv)
         Sleep(8000);
 #endif
 #ifdef __APPLE__
-        sleep(8);
+        sleep(4);
 #endif
         oneTime = false;
     }
